@@ -1,0 +1,29 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: AUTH-CENTER
+          uri: lb://AUTH-CENTER
+          predicates:
+          - Path=/security/**   #访问http://gateway/security/hello会跳转到http://AUTH-CENTER/security/hello
+      discovery:
+        locator:
+          enabled: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    status-page-url-path: /security/status #eureka注册中心的url link
+    health-check-url-path: /actuator/health #健康检查的url
+    hostname: 127.0.0.1
+    instance-id: ${spring.application.name}:${eureka.instance.ipAddress}:${server.port}
+  client:
+    register-with-eureka: true #是否注册到注册中心
+    fetch-registry: true #是否从注册中心拉取注册服务列表,如果要通过注册中心访问其他服务则必须为true，为false上面lb:服务名则无法发现服务
+    service-url:
+      defaultZone: http://localhost:8881/eureka/

@@ -1,0 +1,6 @@
+spring:
+  redis:
+     password: test2018
+     sentinel:
+       master: cement_master
+       nodes: 192.168.1.125:26379,192.168.1.125:26380,192.168.1.125:26381

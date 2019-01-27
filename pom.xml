@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <!-- 打包类型 -->
+	<packaging>pom</packaging>
+	<modules>
+		<module>applications</module>
+		<module>plugins</module>
+	</modules>
+    <!-- 继承spring boot的pom文件 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.8.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>DEMO</name>
+	<description>Demo project for Spring Boot</description>
+
+	<repositories>
+		<repository>
+			<id>alimaven</id>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+    <!-- 定义版本号 -->
+	<properties>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
+		<lombok.version>1.16.20</lombok.version>
+	</properties>
+
+    <!-- 声明需要引入的包，自模块可以通过dependencies进行依赖，而不用填写版本号 -->
+	<dependencyManagement>
+		<dependencies>
+            <!-- spring cloud pom文件  -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+		</dependencies>
+	</dependencyManagement>
+
+    <!-- 当前模块依赖的包，如果某个pom文件继承了当前pom，则同时会依赖这些包 -->
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+	</dependencies>
+
+    <!-- 使用的插件 -->
+	<build>
+		<plugins>
+            <!-- maven编译插件，去掉的话模块之间的引用打包时会报错 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+
+</project>
