@@ -2,11 +2,10 @@ package com.example.demo.applications.auth.controller;
 
 import com.example.demo.applications.auth.service.AuthService;
 import com.example.demo.plugins.model.auth.UserEntity;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,9 +42,7 @@ public class SecurityController {
 
     @GetMapping("getUser")
     public Mono<UserEntity> getUser(){
-        Mono<UserEntity> m = Mono.just(createUser());
-        m.subscribe(System.out::println);
-        return m;
+        return Mono.just(createUser());
     }
 
     @GetMapping("getUser1")
@@ -59,11 +56,9 @@ public class SecurityController {
         user.setUsername("ceshi");
 //        Flux.interval(Duration.of(10, ChronoUnit.SECONDS)).subscribe(System.out::println);
 
-        try {
-            System.out.println("--------------"+Thread.currentThread().getId());
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for(int i=0;i<1000000;i++){
+            Map map = new HashMap<>();
+            map.put(user,user);
         }
         return user;
     }

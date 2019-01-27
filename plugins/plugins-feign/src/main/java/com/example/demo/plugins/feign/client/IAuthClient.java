@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @date: 2019/1/26
  * @Description:
  */
-@FeignClient(name = "auth-center")
+@FeignClient(name = "auth-center")  //name与服务名对应
 public interface IAuthClient {
     @RequestMapping(path = "/security/getUser", method = RequestMethod.GET)
     UserEntity getUser();

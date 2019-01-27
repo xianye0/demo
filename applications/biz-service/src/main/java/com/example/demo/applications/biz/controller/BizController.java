@@ -1,5 +1,7 @@
 package com.example.demo.applications.biz.controller;
 
+import static com.example.demo.plugins.model.auth.UserEntity.createUser;
+
 import com.example.demo.plugins.feign.client.IAuthClient;
 import com.example.demo.plugins.model.auth.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +25,10 @@ public class BizController {
     public UserEntity getUser(){
         return authClient.getUser();
     }
+
+    @GetMapping("getUser1")
+    public UserEntity test(){
+        return createUser();
+    }
+
 }

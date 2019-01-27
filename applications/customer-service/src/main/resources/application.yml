@@ -35,4 +35,20 @@ eureka:
     service-url:
       defaultZone: http://localhost:8881/eureka/
 
+#feign配置，可以针对单个feignClient单独配置
+feign:
+  client:
+    config:
+      auth-center:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+      default:
+          connectTimeout: 5000
+          readTimeout: 5000
+          loggerLevel: basic
+
+logging:
+  config: classpath:logback-config.xml
+
 
