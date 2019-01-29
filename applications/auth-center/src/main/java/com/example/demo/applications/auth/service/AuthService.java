@@ -2,6 +2,8 @@ package com.example.demo.applications.auth.service;
 
 import com.example.demo.plugins.model.auth.UserEntity;
 
+import java.util.List;
+
 /**
  * @author: rock
  * @date: 2019/1/23
@@ -10,4 +12,8 @@ import com.example.demo.plugins.model.auth.UserEntity;
 public interface AuthService {
 
     UserEntity getUser(String username);
+
+    void addUser(UserEntity user);
+
+    List<UserEntity> getList();
 }

@@ -6,6 +6,8 @@ import com.example.demo.plugins.model.auth.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author: rock
  * @date: 2019/1/23
@@ -19,5 +21,15 @@ public class AuthServiceImpl implements AuthService{
     @Override
     public UserEntity getUser(String username) {
         return authMapper.getUser(username);
+    }
+
+    @Override
+    public void addUser(UserEntity user) {
+        authMapper.addUser(user);
+    }
+
+    @Override
+    public List<UserEntity> getList() {
+        return authMapper.getList();
     }
 }
