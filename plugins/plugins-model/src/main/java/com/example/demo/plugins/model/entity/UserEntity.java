@@ -1,6 +1,10 @@
-package com.example.demo.plugins.model.auth;
+package com.example.demo.plugins.model.entity;
 
+import com.example.demo.plugins.model.enumtype.CommonStatusEnum;
+import com.example.demo.plugins.model.enumtype.UserTypeEnum;
 import lombok.Data;
+
+import java.math.BigDecimal;
 
 /**
  * @author: rock
@@ -8,9 +12,17 @@ import lombok.Data;
  * @Description:
  */
 @Data
-public class UserEntity {
+public class UserEntity extends OperateBase {
     private String username;
     private String password;
+    private DepartmentEntity department;
+    private String name;
+    private String phone;
+    private UserTypeEnum type;
+    private CommonStatusEnum status;
+    private UserEntity creator;
+    private UserEntity modifier;
+
 
 
     public static UserEntity createUser(){

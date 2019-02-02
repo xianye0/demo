@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 /**
- * @author: wulei
+ * @author: rock
  * @date: 2019/1/27
  * @Description: 使用route方式注册接口，与使用注解方式效果相同，知识采用lambda表达式来实现。
  */

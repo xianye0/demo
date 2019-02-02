@@ -16,6 +16,8 @@
         <module>register-center</module>
         <module>biz-service</module>
         <module>customer-service</module>
+        <module>biz-shiro</module>
+        <module>biz-security</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -36,6 +38,12 @@
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>plugins-jdbc</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>plugins-message</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>

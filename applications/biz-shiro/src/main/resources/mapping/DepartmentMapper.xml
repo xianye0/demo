@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.applications.auth.mapper.DepartmentMapper">
+    <resultMap id="departmentMap" type="com.example.demo.plugins.model.entity.DepartmentEntity">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+        <association property="parent">
+            <id column="parent_id" property="id"/>
+        </association>
+        <association property="creator">
+            <id column="creator_id" property="id"/>
+        </association>
+        <association property="modifier">
+            <id column="modifier_id" property="id"/>
+        </association>
+    </resultMap>
+    <select id="get" resultType="com.example.demo.plugins.model.entity.DepartmentEntity">
+        select t.* from cm_department t where t.id=#{0}
+    </select>
+
+    <insert id="add" parameterType="com.example.demo.plugins.model.entity.DepartmentEntity">
+        insert into cm_department (name, parent_id, status, creator_id, create_time, modifier_id, modify_time)
+        values(#{name},#{parent.id},#{status},#{currentUser.id},now(),#{currentUser.id},now())
+    </insert>
+
+    <select id="list" resultType="com.example.demo.plugins.model.entity.DepartmentEntity">
+        select t.* from cm_department t
+    </select>
+</mapper>

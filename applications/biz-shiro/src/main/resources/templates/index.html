@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <p th:if="${session.SPRING_SECURITY_CONTEXT.authentication.principal != null}" class="error">
+
+
+    </p>
+    <script>
+        location.href= "/security/login"
+    </script>
+</head>
+<body>
+
+</body>
+</html>

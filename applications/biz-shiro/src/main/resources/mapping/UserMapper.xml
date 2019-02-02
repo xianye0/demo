@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.applications.auth.mapper.UserMapper">
+
+    <select id="getByUsername" resultType="com.example.demo.plugins.model.entity.UserEntity">
+        select t.* from cm_employee t where username=#{0}
+    </select>
+
+    <insert id="add" parameterType="com.example.demo.plugins.model.entity.UserEntity">
+        insert into cm_employee (username, password
+        <if test="department != null">,depart_id</if>
+        , name, phone, status, creator_id, create_time, modifier_id, modify_time)
+        values(#{username},#{password}
+        <if test="department != null">,#{department.id}</if>
+        ,#{name},#{phone},#{status},#{currentUser.id},now(),#{currentUser.id},now())
+    </insert>
+
+    <select id="list" resultType="com.example.demo.plugins.model.entity.UserEntity">
+        select t.* from cm_employee t
+    </select>
+</mapper>

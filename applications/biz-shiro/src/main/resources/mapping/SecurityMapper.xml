@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.applications.auth.mapper.SecurityMapper">
+
+    <select id="getByUsername" resultType="com.example.demo.applications.auth.entity.Operator">
+        select t.* from cm_employee t where username=#{0}
+    </select>
+
+    <select id="getPermissions" resultType="com.example.demo.applications.auth.entity.Permission">
+        select * from cm_permission where status=1 and
+        id in(select rp.permission_id from cm_role_permission rp,cm_employee_role er,cm_role r
+        where rp.role_id=er.role_id and er.role_id=r.id and r.status=1 and employee_id=#{0})
+    </select>
+</mapper>

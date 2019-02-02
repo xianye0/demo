@@ -17,6 +17,10 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.42</version>
+        </dependency>
     </dependencies>
 </project>

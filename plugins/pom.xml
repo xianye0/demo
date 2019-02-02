@@ -15,6 +15,7 @@
         <module>plugins-feign</module>
         <module>plugins-cache</module>
         <module>plugins-jdbc</module>
+        <module>plugins-message</module>
     </modules>
 
 </project>
