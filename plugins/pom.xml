@@ -16,6 +16,14 @@
         <module>plugins-cache</module>
         <module>plugins-jdbc</module>
         <module>plugins-message</module>
+        <module>plugins-utils</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

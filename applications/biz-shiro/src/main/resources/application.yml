@@ -1,13 +1,6 @@
 server:
-  port: 8801
+  port: 8810
 spring:
-  cloud:
-    zookeeper:
-      discovery:
-        instance-host: localhost
-        instance-port: 8080
-        register: false
-      connect-string: localhost:2181
   application:
     name: auth-center
   datasource:

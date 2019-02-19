@@ -1,6 +1,6 @@
 package com.example.demo.applications.auth.controller;
 
-import com.example.demo.applications.auth.service.IDepartmentService;
+import com.example.demo.applications.auth.service.impl.DepartmentServiceImpl;
 import com.example.demo.plugins.model.entity.DepartmentEntity;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
 @RestController
 public class DepartmentController extends BaseController{
     @Autowired
-    IDepartmentService departmentService;
+    DepartmentServiceImpl departmentService;
 
 
     @PostMapping("add")

@@ -1,7 +1,6 @@
 package com.example.demo.applications.auth.service.impl;
 
 import com.example.demo.applications.auth.mapper.UserMapper;
-import com.example.demo.applications.auth.service.IUserService;
 import com.example.demo.plugins.model.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +10,8 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service
-public class UserServiceImpl extends CrudService<UserMapper,UserEntity> implements IUserService {
+public class UserServiceImpl extends CrudService<UserMapper,UserEntity> {
 
-    @Override
     public UserEntity getByUsername(String username) {
         return dao.getByUsername(username);
     }

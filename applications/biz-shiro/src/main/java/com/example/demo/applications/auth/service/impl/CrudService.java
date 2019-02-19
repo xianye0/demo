@@ -27,4 +27,8 @@ public abstract class CrudService<D extends CrudMapper, E extends OperateBase> {
     public E get(E e) {
         return (E) dao.get(e);
     }
+
+    public void mod(E e){
+        dao.mod(e);
+    }
 }

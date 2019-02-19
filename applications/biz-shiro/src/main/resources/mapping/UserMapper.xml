@@ -3,7 +3,7 @@
 <mapper namespace="com.example.demo.applications.auth.mapper.UserMapper">
 
     <select id="getByUsername" resultType="com.example.demo.plugins.model.entity.UserEntity">
-        select t.* from cm_employee t where username=#{0}
+        select t.* from cm_employee t where username=#{0} FOR UPDATE
     </select>
 
     <insert id="add" parameterType="com.example.demo.plugins.model.entity.UserEntity">
@@ -18,4 +18,8 @@
     <select id="list" resultType="com.example.demo.plugins.model.entity.UserEntity">
         select t.* from cm_employee t
     </select>
+
+    <update id="mod" parameterType="com.example.demo.plugins.model.entity.UserEntity">
+        update cm_employee set password=#{password},name=concat(name,1) where username = #{username}
+    </update>
 </mapper>

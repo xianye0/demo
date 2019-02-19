@@ -15,4 +15,6 @@ public interface CrudMapper<E> {
     List<E> list();
 
     void delete(E e);
+
+    void mod(E e);
 }

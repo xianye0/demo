@@ -1,6 +1,6 @@
 package com.example.demo.applications.auth.controller;
 
-import com.example.demo.applications.auth.service.ISecurityService;
+import com.example.demo.applications.auth.service.impl.SecurityServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class SecurityController {
     @Autowired
-    ISecurityService securityService;
+    SecurityServiceImpl securityService;
     @Autowired
     RedisTemplate redisTemplate;
 

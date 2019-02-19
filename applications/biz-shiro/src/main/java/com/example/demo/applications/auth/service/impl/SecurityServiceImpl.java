@@ -3,8 +3,6 @@ package com.example.demo.applications.auth.service.impl;
 import com.example.demo.applications.auth.entity.Operator;
 import com.example.demo.applications.auth.entity.Permission;
 import com.example.demo.applications.auth.mapper.SecurityMapper;
-import com.example.demo.applications.auth.service.ISecurityService;
-import com.example.demo.applications.auth.service.IUserService;
 import com.example.demo.plugins.message.response.ResponsesBuilder;
 import com.example.demo.plugins.model.response.Responses;
 import lombok.extern.slf4j.Slf4j;
@@ -21,22 +19,20 @@ import java.util.List;
  */
 @Slf4j
 @Service
-public class SecurityServiceImpl implements ISecurityService {
+public class SecurityServiceImpl {
     @Autowired
     ResponsesBuilder responsesBuilder;
     @Autowired
-    IUserService userService;
+    UserServiceImpl userService;
     @Autowired
     SecurityMapper securityMapper;
 
-    @Override
     public Operator getByUsername(String username) {
         Operator operator = securityMapper.getByUsername(username);
         getAuthority(operator);
         return operator;
     }
 
-    @Override
     public Responses login(String username, String password) {
         Operator operator = getByUsername(username);
         return null;

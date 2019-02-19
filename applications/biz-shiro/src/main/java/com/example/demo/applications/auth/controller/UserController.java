@@ -1,6 +1,6 @@
 package com.example.demo.applications.auth.controller;
 
-import com.example.demo.applications.auth.service.IUserService;
+import com.example.demo.applications.auth.service.impl.UserServiceImpl;
 import com.example.demo.plugins.model.entity.UserEntity;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import java.util.List;
 @Controller
 public class UserController extends BaseController{
     @Autowired
-    IUserService userService;
+    UserServiceImpl userService;
 
     @RequiresPermissions("user:add")
     @PostMapping("add")
