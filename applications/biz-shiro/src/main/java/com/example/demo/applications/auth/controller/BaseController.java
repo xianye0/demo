@@ -22,6 +22,7 @@ public class BaseController {
     private void sessionHandler(HttpSession session){
         Operator operator = (Operator) SecurityUtils.getSubject().getPrincipal();
         UserUtils.setUser(operator);
+        session.setAttribute("menu",operator.getMenu());
     }
 
 

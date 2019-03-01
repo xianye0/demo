@@ -46,7 +46,7 @@ create table cm_role(
 
 --
 -- 权限
-drop table IF EXISTS cm_permission;
+drop table IF EXISTS cm_menu;
 create table cm_permission(
   id BIGINT COMMENT 'ID' PRIMARY KEY AUTO_INCREMENT,
   name varchar(50) COMMENT '权限名称',
@@ -60,7 +60,7 @@ create table cm_permission(
 
 
 --
-drop table IF EXISTS cm_role_permission;
+drop table IF EXISTS cm_role_menu;
 create table cm_role_permission(
   role_id BIGINT,
   permission_id BIGINT

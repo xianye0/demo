@@ -10,6 +10,10 @@ import com.example.demo.applications.auth.entity.Operator;
 public class UserUtils {
     private static ThreadLocal<Operator> userMap = new ThreadLocal<>();
 
+    private UserUtils(){
+
+    }
+
     public static void setUser(Operator user){
         userMap.set(user);
     }

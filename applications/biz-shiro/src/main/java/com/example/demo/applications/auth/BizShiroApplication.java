@@ -1,6 +1,7 @@
 package com.example.demo.applications.auth;
 
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.example.demo.plugins.utils.lock.CacheLock;
 import com.example.demo.plugins.utils.lock.HashLock;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +22,11 @@ public class BizShiroApplication {
 	@Bean
 	public CacheLock getLock(){
 		return new HashLock();
+	}
+
+	@Bean
+	public ShiroDialect shiroDialect() {
+		return new ShiroDialect();
 	}
 }
 

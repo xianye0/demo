@@ -1,6 +1,6 @@
 package com.example.demo.applications.auth;
 
-import com.example.demo.applications.auth.service.impl.UserServiceImpl;
+import com.example.demo.applications.auth.service.impl.UserService;
 import com.example.demo.plugins.model.entity.UserEntity;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -23,7 +23,7 @@ import static org.hamcrest.Matchers.is;
 @SpringBootTest(classes = BizShiroApplication.class)
 public class UserServiceTest {
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
 
     public void addUser(){

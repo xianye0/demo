@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+
+
+</head>
+
+<body>
+
+<!-- start: Main Menu -->
+<div id="sidebar-left" class="span2" th:fragment="menu">
+
+    <div class="row-fluid actions">
+        <input type="text" class="search span12" placeholder="..."/>
+    </div>
+
+    <div class="nav-collapse sidebar-nav">
+        <ul class="nav nav-tabs nav-stacked main-menu">
+            <li th:each="menu,menuStat : ${session.menu}">
+                <a th:href="${menu.url}" th:class="${menu.subList != null?'dropmenu':''}">
+                    <i th:class="${menu.icon}"></i>
+                    <span class="hidden-tablet" th:text="${menu.name}"></span>
+                    <span class="label" th:if="${menu.subList != null}" th:text="${#lists.size(menu.subList)}"></span>
+                </a>
+                <ul th:if="${menu.subList != null}">
+                    <li th:each="second,secondStat : ${menu.subList}">
+                        <a class="submenu" th:href="${second.url}">
+                            <i th:class="${second.icon}"></i>
+                            <span class="hidden-tablet" th:text="  ${second.name}"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end: Main Menu -->
+</body>
+</html>

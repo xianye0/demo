@@ -17,6 +17,7 @@ import java.util.List;
 public class Operator extends UserEntity implements AuthorizationInfo {
 
     private List<String> authorities;
+    private List<Menu> menu;
 
     @Override
     public Collection<String> getRoles() {

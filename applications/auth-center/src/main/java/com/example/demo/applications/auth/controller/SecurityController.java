@@ -1,7 +1,7 @@
 package com.example.demo.applications.auth.controller;
 
 import com.example.demo.applications.auth.service.AuthService;
-import com.example.demo.plugins.model.auth.UserEntity;
+import com.example.demo.plugins.model.entity.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

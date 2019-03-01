@@ -1,7 +1,7 @@
 package com.example.demo.applications.auth.config;
 
 import com.example.demo.applications.auth.entity.Operator;
-import com.example.demo.applications.auth.service.impl.SecurityServiceImpl;
+import com.example.demo.applications.auth.service.impl.SecurityService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class CustomRealm extends AuthorizingRealm {
     @Autowired
-    SecurityServiceImpl securityService;
+    SecurityService securityService;
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         //查询用户名称

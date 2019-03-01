@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class TestService {
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
     @Autowired
     CacheLock distributedLock;
 

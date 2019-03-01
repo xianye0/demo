@@ -1,6 +1,7 @@
 package com.example.demo.applications.auth.service;
 
-import com.example.demo.plugins.model.auth.UserEntity;
+
+import com.example.demo.plugins.model.entity.UserEntity;
 
 import java.util.List;
 

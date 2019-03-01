@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @Description:
  */
 @Controller
-public class IndexController {
+public class IndexController extends BaseController{
 
     @GetMapping("index")
     public String index(){

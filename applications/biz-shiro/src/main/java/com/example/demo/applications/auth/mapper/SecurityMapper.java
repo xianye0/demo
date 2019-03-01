@@ -1,7 +1,7 @@
 package com.example.demo.applications.auth.mapper;
 
 import com.example.demo.applications.auth.entity.Operator;
-import com.example.demo.applications.auth.entity.Permission;
+import com.example.demo.applications.auth.entity.Menu;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.math.BigDecimal;
@@ -16,5 +16,5 @@ import java.util.List;
 public interface SecurityMapper {
     Operator getByUsername(String username);
 
-    List<Permission> getPermissions(BigDecimal operId);
+    List<Menu> getPermissions(BigDecimal operId);
 }

@@ -6,9 +6,9 @@
         select t.* from cm_employee t where username=#{0}
     </select>
 
-    <select id="getPermissions" resultType="com.example.demo.applications.auth.entity.Permission">
-        select * from cm_permission where status=1 and
-        id in(select rp.permission_id from cm_role_permission rp,cm_employee_role er,cm_role r
+    <select id="getPermissions" resultType="com.example.demo.applications.auth.entity.Menu">
+        select id,name,authorities,parent_id parentId,type,`order`,status,url,icon,`order` from cm_menu where status=1 and
+        id in(select rp.menu_id from cm_role_menu rp,cm_employee_role er,cm_role r
         where rp.role_id=er.role_id and er.role_id=r.id and r.status=1 and employee_id=#{0})
     </select>
 </mapper>

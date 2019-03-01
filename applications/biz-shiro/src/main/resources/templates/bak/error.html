@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header>
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+
+    <style>
+        .tdClass {
+            border-bottom: #368 solid 3px;
+            width: 50%;
+            line-height: 24px;
+            padding-top: 50px;
+        }
+    </style>
+</header>
+<body>
+<table align="center" width="80%">
+    <tr>
+        <td class="tdClass" style="padding-top: 10px;">
+            错误
+        </td>
+    </tr>
+</table>
+</body>
+<script type="text/javascript">
+
+    function onSelectAll(name) {
+        $("input[name='" + name + "']").attr("checked", true);
+    }
+
+    function onClearCache(name) {
+        var cacheNames = new Array();
+        $("input[name='" + name + "']").each(
+            function () {
+                if ($(this).get(0).checked) {
+                    cacheNames.push($(this).val())
+                }
+            });
+
+        if (cacheNames.length == 0) {
+            alert("请选择需要操作的对象");
+            return;
+        }
+
+        $.ajax({
+            url: name + "?v="+new Date(),
+            data: {
+                cacheNames: cacheNames
+            },
+            method: "POST",
+            success: function (data, textStatus, jqXHR) {
+                if(data == "" || data == undefined || data == ''){
+                    alert("成功");
+                    $("input[name='" + name + "']").attr("checked", false);
+                }else{
+                    $("input[name='" + name + "']").attr("checked", false);
+                    var alt = "有部分操作失败，操作失败的还被选中着";
+                    var datas = data.split(',');
+                    console.info(datas);
+                    for (var i = 0;(datas.length-1) > i;i++){
+                        $("input[name='" + name + "']").each(function () {
+                            if($(this).val() === datas[i]){
+                                $(this).attr("checked", true);
+                            }
+                            console.info($(this).val() +" -> "+datas[i])
+                        })
+                    }
+                    alert(alt);
+                }
+            },
+            error: function () {
+                alert("失败")
+            }
+        })
+    }
+</script>
+</html>

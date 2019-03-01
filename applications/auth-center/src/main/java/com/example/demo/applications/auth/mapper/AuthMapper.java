@@ -1,6 +1,6 @@
 package com.example.demo.applications.auth.mapper;
 
-import com.example.demo.plugins.model.auth.UserEntity;
+import com.example.demo.plugins.model.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

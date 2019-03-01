@@ -1,6 +1,6 @@
 package com.example.demo.applications.auth.controller;
 
-import com.example.demo.applications.auth.service.impl.UserServiceImpl;
+import com.example.demo.applications.auth.service.impl.UserService;
 import com.example.demo.plugins.model.entity.UserEntity;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import java.util.List;
 @Controller
 public class UserController extends BaseController{
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     @RequiresPermissions("user:add")
     @PostMapping("add")
@@ -32,15 +32,19 @@ public class UserController extends BaseController{
 
     @RequiresPermissions("user:get")
     @GetMapping("get")
-    @ResponseBody
     public UserEntity getUser(String username){
         return userService.getByUsername(username);
     }
 
     @RequiresPermissions("user:list")
     @GetMapping("list")
-    @ResponseBody
     public List<UserEntity> getList(){
         return userService.list();
+    }
+
+    @RequiresPermissions("user:list")
+    @GetMapping("init")
+    public String init(){
+        return "index";
     }
 }

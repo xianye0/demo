@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author: rock
  * @date: 2019/2/2
- * @Description:
+ * @Description: 基础service
  */
 public abstract class CrudService<D extends CrudMapper, E extends OperateBase> {
 

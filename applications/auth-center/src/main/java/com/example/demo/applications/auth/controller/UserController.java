@@ -1,7 +1,7 @@
 package com.example.demo.applications.auth.controller;
 
 import com.example.demo.applications.auth.service.AuthService;
-import com.example.demo.plugins.model.auth.UserEntity;
+import com.example.demo.plugins.model.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

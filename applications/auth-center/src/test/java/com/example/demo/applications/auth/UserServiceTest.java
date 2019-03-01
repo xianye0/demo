@@ -1,7 +1,7 @@
 package com.example.demo.applications.auth;
 
 import com.example.demo.applications.auth.service.AuthService;
-import com.example.demo.plugins.model.auth.UserEntity;
+import com.example.demo.plugins.model.entity.UserEntity;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;

@@ -38,8 +38,18 @@ public class ShiroConfiguration {
         Map<String,String> map = new HashMap<>();
         //登出
         map.put("/logout","logout");
+        //静态资源
+        map.put("/css/**","anon");
+        map.put("/js/**","anon");
+        map.put("/font/**","anon");
+        map.put("/ico/**","anon");
+        map.put("/img/**","anon");
+        //demo
+        map.put("/demo/**","anon");
+        map.put("/test/**","anon");
         //对所有用户认证
         map.put("/**","authc");
+
         //登录
         shiroFilterFactoryBean.setLoginUrl("/security/login");
         //首页
