@@ -2,6 +2,8 @@ package com.example.demo.applications.auth.controller;
 
 import com.example.demo.applications.auth.service.impl.UserService;
 import com.example.demo.plugins.model.entity.UserEntity;
+import com.example.demo.plugins.model.page.PageParameter;
+import com.example.demo.plugins.model.page.ResultPage;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,14 +39,15 @@ public class UserController extends BaseController{
     }
 
     @RequiresPermissions("user:list")
-    @GetMapping("list")
-    public List<UserEntity> getList(){
-        return userService.list();
+    @GetMapping("page")
+    @ResponseBody
+    public ResultPage<UserEntity> getPage(PageParameter parameter){
+        return userService.page(parameter);
     }
 
     @RequiresPermissions("user:list")
     @GetMapping("init")
     public String init(){
-        return "index";
+        return "user/user";
     }
 }

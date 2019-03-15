@@ -35,27 +35,7 @@
 
 <body>
 <!-- start: Header -->
-<div class="navbar">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar" data-toggle="collapse"
-               data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a id="main-menu-toggle" class="hidden-phone open"><i class="icon-reorder"></i></a>
-            <!-- start: logo -->
-            <div th:replace="/common/header :: logo"></div>
-            <!-- end: logo -->
-
-            <!-- start: Header Menu -->
-            <div th:replace="/common/header :: header"></div>
-            <!-- end: Header Menu -->
-
-        </div>
-    </div>
-</div>
+<div th:replace="/common/header::header"></div>
 <!-- end: Header -->
 
 <div class="container-fluid-full">

@@ -5,6 +5,7 @@ import com.example.demo.plugins.model.enumtype.CommonStatusEnum;
 import com.example.demo.plugins.utils.tree.Sortable;
 import com.example.demo.plugins.utils.tree.Tree;
 import lombok.Data;
+import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -35,7 +36,9 @@ public class Menu extends OperateBase implements Tree<Menu>,Sortable {
         }
         List<String> list = new ArrayList<>();
         for(String auth : authorities.split(",")){
-            list.add(auth);
+            if(!StringUtils.isEmpty(auth)){
+                list.add(auth);
+            }
         }
         return list;
     }

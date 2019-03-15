@@ -2,6 +2,8 @@ package com.example.demo.applications.auth.service.impl;
 
 import com.example.demo.applications.auth.mapper.CrudMapper;
 import com.example.demo.plugins.model.entity.OperateBase;
+import com.example.demo.plugins.model.page.PageParameter;
+import com.example.demo.plugins.model.page.ResultPage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -28,7 +30,11 @@ public abstract class CrudService<D extends CrudMapper, E extends OperateBase> {
         return (E) dao.get(e);
     }
 
-    public void mod(E e){
+    public void mod(E e) {
         dao.mod(e);
+    }
+
+    public ResultPage<E> page(PageParameter parameter) {
+        return new ResultPage<>(parameter, dao.list());
     }
 }

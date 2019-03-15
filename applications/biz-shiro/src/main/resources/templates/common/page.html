@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- start: footer -->
+<div class="pagination pagination-centered" th:fragment="page" id="page">
+    <ul>
+        <li><a href="#">Prev</a></li>
+        <li class="active">
+            <a href="#">{{page.pageSize}}</a>
+        </li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
+</div>
+<!-- end: footer -->
+</body>
+</html>

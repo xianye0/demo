@@ -2,6 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 
 <body>
+
+
+
+
+<!-- start: Header -->
+<div class="navbar" th:fragment="header">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse"
+               data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a id="main-menu-toggle" class="hidden-phone open"><i class="icon-reorder"></i></a>
+            <!-- start: logo -->
+            <div th:replace="/common/header :: logo"></div>
+            <!-- end: logo -->
+
+            <!-- start: Header Menu -->
+            <div th:replace="/common/header :: menu"></div>
+            <!-- end: Header Menu -->
+        </div>
+    </div>
+</div>
+<!-- end: Header -->
+
+
+
 <!-- start: logo -->
 <div class="row-fluid" th:fragment="logo">
     <a class="brand span2" href="index.html"><span>SimpliQ</span></a>
@@ -9,7 +38,7 @@
 <!-- end: logo -->
 
 <!-- start: header Menu -->
-<div class="nav-no-collapse header-nav" th:fragment="header">
+<div class="nav-no-collapse header-nav" th:fragment="menu">
     <ul class="nav pull-right">
         <li class="dropdown hidden-phone">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">

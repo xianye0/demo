@@ -15,7 +15,7 @@ import java.util.Map;
  * @date: 2019/1/29
  * @Description:
  */
-@RequestMapping("test")
+@RequestMapping("test1")
 @RestController
 public class TestController {
     @GetMapping("getUser")
