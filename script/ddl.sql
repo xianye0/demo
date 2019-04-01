@@ -27,6 +27,7 @@ create table cm_employee(
   create_time DATETIME COMMENT '创建时间',
   modifier_id BIGINT COMMENT '修改人',
   modify_time DATETIME COMMENT '修改时间',
+  pass_modify_time DATETIME COMMENT '密码修改时间',
   last_login_time DATETIME COMMENT '最后登录时间'
 )comment '员工表';
 create INDEX idx_username on cm_employee(username);

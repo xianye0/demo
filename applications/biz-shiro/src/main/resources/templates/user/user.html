@@ -101,7 +101,20 @@
 
 
 <script>
-
+    var q = new Vue({
+        el: "#q",
+        data () {
+            return {
+                username: null,
+                name: null
+            }
+        },
+        methods:{
+            query:function(event){
+                s();
+            }
+        }
+    });
     var list = new Vue({
         el: '#app',
         data () {
@@ -117,24 +130,8 @@
             }
         },
         methods:{
-            query:function () {
-                axios
-                    .get('/user/page',{
-                        params:{
-                            pageIndex: page.pageIndex,
-                            pageSize: page.pageSize
-                        }
-                    })
-                    .then(response => {
-                        this.info = response.data.data;
-                        console.log(this.info);
-                        page.page = response.data.page;
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        this.errored = true
-                    })
-                    .finally(() => this.loading = false)
+            query:function(event){
+                s();
             }
         },
         mounted () {
@@ -142,8 +139,26 @@
         }
     });
 
-    function query(){
-
+    function s(){
+        axios
+            .get('/user/page',{
+                params:{
+                    pageIndex: page.pageIndex,
+                    pageSize: page.pageSize,
+                    username: q.username===""?null:q.username,
+                    name: q.name===""?null:q.name
+                }
+            })
+            .then(response => {
+                list.info = response.data.data;
+                console.log(list.info);
+                page.page = response.data.page;
+            })
+            .catch(error => {
+                console.log(error)
+                list.errored = true
+            })
+            .finally(() => list.loading = false)
     }
 </script>
 

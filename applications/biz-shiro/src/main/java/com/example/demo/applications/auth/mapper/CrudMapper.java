@@ -1,5 +1,7 @@
 package com.example.demo.applications.auth.mapper;
 
+import com.example.demo.plugins.model.page.PageParameter;
+
 import java.util.List;
 
 /**
@@ -17,4 +19,6 @@ public interface CrudMapper<E> {
     void delete(E e);
 
     void mod(E e);
+
+    List<E> page(PageParameter parameter);
 }

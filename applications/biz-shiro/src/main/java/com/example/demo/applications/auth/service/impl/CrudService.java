@@ -35,6 +35,6 @@ public abstract class CrudService<D extends CrudMapper, E extends OperateBase> {
     }
 
     public ResultPage<E> page(PageParameter parameter) {
-        return new ResultPage<>(parameter, dao.list());
+        return new ResultPage<>(parameter, dao.page(parameter));
     }
 }

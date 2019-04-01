@@ -2,8 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.applications.auth.mapper.UserMapper">
 
+    <resultMap type="com.example.demo.plugins.model.entity.UserEntity" id="userMap">
+        <id property="id" column="id" jdbcType="NUMERIC"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="status" column="status"/>
+        <!-- 		column:对应的列名		property:对应的属性名	 -->
+        <association property="department" javaType="com.example.demo.plugins.model.entity.DepartmentEntity">
+            <id property="id" column="department_id" jdbcType="NUMERIC"/>
+            <result property="name" column="department_name" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
     <select id="getByUsername" resultType="com.example.demo.plugins.model.entity.UserEntity">
-        select t.* from cm_employee t where username=#{0} FOR UPDATE
+        select t.* from cm_employee t where username=#{0}
     </select>
 
     <insert id="add" parameterType="com.example.demo.plugins.model.entity.UserEntity">
@@ -17,6 +29,17 @@
 
     <select id="list" resultType="com.example.demo.plugins.model.entity.UserEntity">
         select t.* from cm_employee t
+    </select>
+
+    <select id="page" resultMap="userMap" parameterType="com.example.demo.plugins.model.page.PageParameter">
+        select e.*,d.name department_name,d.id department_id from cm_employee e left join cm_department d on e.depart_id=d.id where 1=1
+        <if test="username != null and username != ''">
+            and e.username=#{username}
+        </if>
+        <if test="name != null and name != ''">
+            and e.name =#{name}
+        </if>
+
     </select>
 
     <update id="mod" parameterType="com.example.demo.plugins.model.entity.UserEntity">
