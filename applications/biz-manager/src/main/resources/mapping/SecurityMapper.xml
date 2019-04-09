@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.applications.auth.mapper.SecurityMapper">
+
+    <select id="getByUsername" resultType="com.example.demo.applications.auth.entity.Operator">
+        select t.* from cm_employee t where username=#{0}
+    </select>
+
+    <select id="queryAuthorityList" resultType="com.example.demo.applications.auth.entity.Authority">
+        select id,name,authorities,parent_id parentId,type,`order`,status,url,icon,`order` from cm_menu where status=1 and
+        id in(select rp.menu_id from cm_role_menu rp,cm_employee_role er,cm_role r
+        where rp.role_id=er.role_id and er.role_id=r.id and r.status=1 and employee_id=#{0})
+    </select>
+
+    <update id="updateLoginDate">
+        update cm_employee set last_login_time=now() where username=#{0}
+    </update>
+</mapper>

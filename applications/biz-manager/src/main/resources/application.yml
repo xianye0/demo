@@ -1,0 +1,35 @@
+server:
+  port: 8810
+spring:
+  application:
+    name: auth-center
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.125:3306/test
+    username: root
+    password: 1qaz!QAZ
+  redis:
+     password: test2018
+     sentinel:
+       master: cement_master
+       nodes: 192.168.1.125:26379,192.168.1.125:26380,192.168.1.125:26381
+  messages:
+    basename: i18n/message
+    encoding: UTF-8
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-handlers-package: com.example.demo.plugins.jdbc.typehandler #mybatis handler注册
+eureka:
+  instance:
+    prefer-ip-address: true
+    status-page-url-path: /security/status #eureka注册中心的url link
+    health-check-url-path: /actuator/health #健康检查的url
+    hostname: 127.0.0.1
+    instance-id: auth-center
+  client:
+    register-with-eureka: true #是否注册到注册中心
+    fetch-registry: false #是否从注册中心拉取注册服务列表
+    service-url:
+      defaultZone: http://localhost:8881/eureka/
+logging:
+  config: classpath:logback-config.xml

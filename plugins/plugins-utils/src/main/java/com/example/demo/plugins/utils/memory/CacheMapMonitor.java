@@ -1,6 +1,7 @@
 package com.example.demo.plugins.utils.memory;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ import java.util.Map;
  * @Description:
  */
 public class CacheMapMonitor {
-    private static List<Map<Object, CacheMap.CacheValue>> list = new ArrayList<>();
+    private static List<Map<Object, CacheMap.CacheValue>> list = Collections.synchronizedList(new ArrayList<>());
     private static CacheMapMonitor instance;
 
 

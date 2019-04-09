@@ -18,7 +18,7 @@ public class LockTest {
     @Test
     public void test(){
         CacheMap map = new CacheMap();
-        CacheLock lock = new HashLock();
+        CacheLock lock = new HashLock(map);
         for(int i = 0;i<100;i++){
             String key = i+"_";
             new Thread(()->{

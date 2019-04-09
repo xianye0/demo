@@ -32,6 +32,8 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
 		<lombok.version>1.16.20</lombok.version>
+		<bcprov.version>1.46</bcprov.version>
+		<commons-codec.version>1.10</commons-codec.version>
 	</properties>
 
     <!-- 声明需要引入的包，自模块可以通过dependencies进行依赖，而不用填写版本号 -->
@@ -45,6 +47,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcprov-jdk16</artifactId>
+				<version>${bcprov.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

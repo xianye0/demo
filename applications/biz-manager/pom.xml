@@ -3,28 +3,39 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>plugins</artifactId>
+        <artifactId>applications</artifactId>
         <groupId>com.example</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>plugins-utils</artifactId>
+    <artifactId>biz-manager</artifactId>
 
+    <!-- 需要单独依赖的包 -->
     <dependencies>
+
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk16</artifactId>
+            <groupId>com.example</groupId>
+            <artifactId>plugins-cache</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
+            <groupId>com.example</groupId>
+            <artifactId>plugins-feign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>plugins-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>plugins-message</artifactId>
         </dependency>
 
         <dependency>
@@ -32,5 +43,4 @@
             <artifactId>commons-codec</artifactId>
         </dependency>
     </dependencies>
-
 </project>

@@ -1,6 +1,6 @@
 package com.example.demo.plugins.utils.lock;
 
-import com.example.demo.plugins.utils.memory.CacheMap;
+import com.example.demo.plugins.utils.memory.ICacheMap;
 
 /**
  * @author: rock
@@ -9,7 +9,10 @@ import com.example.demo.plugins.utils.memory.CacheMap;
  */
 public class HashLock implements CacheLock {
     private static final int WAIT_TIME = 15;
-    CacheMap map = new CacheMap();
+    private ICacheMap map;
+    public HashLock(ICacheMap map){
+        this.map = map;
+    }
 
     @Override
     public boolean tryLock(Object key, int waitTime) {
