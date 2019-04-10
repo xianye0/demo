@@ -52,6 +52,15 @@ public class UserUtils {
         return (List<Authority>) getOperatorMap(key).get("menuTree");
     }
 
+    public void remove(String key){
+        map.remove(PRE + key);
+    }
+
+    public List<String> getAuthCodes(String key){
+        return (List<String>)getOperatorMap(key).get("authCodes");
+    }
+
+
 
 
 }

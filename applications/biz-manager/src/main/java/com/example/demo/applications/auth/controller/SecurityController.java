@@ -1,5 +1,6 @@
 package com.example.demo.applications.auth.controller;
 
+import com.example.demo.applications.auth.entity.constants.SecurityConstants;
 import com.example.demo.applications.auth.service.impl.SecurityService;
 import com.example.demo.plugins.model.response.Responses;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("security")
 @Slf4j
-public class SecurityController extends BaseController{
+public class SecurityController extends BaseController {
     @Autowired
     SecurityService securityService;
     @Autowired
@@ -31,9 +32,9 @@ public class SecurityController extends BaseController{
     }
 
     @PostMapping("login")
-    public Responses login(String username,String password,String key){
+    public Responses login(String username, String password, String key) {
 
-        return responsesBuilder.success(securityService.login(username,password,key));
+        return responsesBuilder.success(securityService.login(username, password, key));
     }
 
     /**
@@ -42,8 +43,15 @@ public class SecurityController extends BaseController{
      * @return
      */
     @GetMapping("queryMenuList")
-    public Responses queryMenuList(@RequestHeader("accessToken") String token) {
+    public Responses queryMenuList(@RequestHeader(SecurityConstants.ACCESSTOKEN) String token) {
         return responsesBuilder.success(securityService.queryMenuList(token));
+    }
+
+
+    @GetMapping("logout")
+    public Responses logout(@RequestHeader(SecurityConstants.ACCESSTOKEN) String token) {
+        securityService.logout(token);
+        return responsesBuilder.success();
     }
 
 }

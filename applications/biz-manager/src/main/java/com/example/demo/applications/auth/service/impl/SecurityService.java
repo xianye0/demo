@@ -45,23 +45,27 @@ public class SecurityService {
     KeyPairManager keyPairManager;
 
 
+    /**
+     * 获取公钥
+     * @return
+     */
     public PasswordKey getPublicKey(){
         String key = createToken();
         return keyPairManager.getPublicKey(key);
     }
     /**
      * 登录
-     * @param userName
+     * @param username
      * @param pwd
      * @param key
      * @return
      */
-    public String login(String userName, String pwd, String key) {
+    public String login(String username, String pwd, String key) {
         Integer codeEnum;
         Map userInfo = new HashMap();
-        log.info("Start get {} userInfo.", userName);
+        log.info("Start get {} userInfo.", username);
         //获取用户信息
-        Operator user = securityMapper.getByUsername(userName);
+        Operator user = securityMapper.getByUsername(username);
         if (user == null) {
             throw new ResponseException(ResponseCode.USERNAME_NOTEXISTS);
         }
@@ -87,8 +91,39 @@ public class SecurityService {
 
     }
 
-    public List<Authority> queryMenuList(String key){
-        return userUtils.getMenu(key);
+    /**
+     * 获取菜单
+     * @param token
+     * @return
+     */
+    public List<Authority> queryMenuList(String token){
+        return userUtils.getMenu(token);
+    }
+
+
+    /**
+     * 注销
+     * @param token
+     */
+    public void logout(String token){
+        userUtils.remove(token);
+    }
+
+    /**
+     * 判断是否拥有权限
+     * @param token
+     * @param url
+     * @return
+     */
+    public int checkAuth(String token,String url){
+        try{
+            if(userUtils.getAuthCodes(token).contains(url)){
+                return ResponseCode.SUCCESS;
+            }
+            return ResponseCode.AUTH_FAILED;
+        }catch (ResponseException e){
+            return ResponseCode.TOKEN_INVALID;
+        }
     }
 
 

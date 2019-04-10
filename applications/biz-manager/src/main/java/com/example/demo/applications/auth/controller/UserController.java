@@ -19,23 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequestMapping("user")
 @RestController
-public class UserController extends BaseController{
+public class UserController extends BaseController {
     @Autowired
     UserService userService;
 
     @PostMapping("add")
-    public void addUser(@RequestBody UserEntity user){
+    public void addUser(@RequestBody UserEntity user) {
         userService.add(user);
     }
 
     @GetMapping("get")
-    public UserEntity getUser(String username){
+    public UserEntity getUser(String username) {
         return userService.getByUsername(username);
     }
 
     @GetMapping("page")
-    public Responses<ResultPage<UserEntity>> getPage(PageParameter parameter){
-
+    public Responses<ResultPage<UserEntity>> getPage(PageParameter parameter) {
         return responsesBuilder.success(userService.page(parameter));
     }
 

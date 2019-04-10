@@ -33,6 +33,7 @@ public class DefaultKeyPairManager implements KeyPairManager {
 
         try {
             PasswordKey passwordKey =  map.get(key);
+            map.remove(key);
             return RSAUtils.generateRSAPrivateKey(passwordKey.getPrivateModulus(), passwordKey.getPrivateExponent());
         } catch (NullPointerException | IllegalArgumentException | InvalidKeySpecException e) {
             throw new PrivateKeyExpiredException(e);

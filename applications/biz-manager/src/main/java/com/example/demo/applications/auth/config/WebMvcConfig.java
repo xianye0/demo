@@ -3,8 +3,11 @@ package com.example.demo.applications.auth.config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.example.demo.applications.auth.interceptor.SecurityInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
@@ -25,5 +28,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 SerializerFeature.PrettyFormat);
         converter.setFastJsonConfig(config);
         converters.add(converter);
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(getSecurityInterceptor()).excludePathPatterns("/security/*").addPathPatterns("/**");
+    }
+
+    @Bean
+    public SecurityInterceptor getSecurityInterceptor(){
+        return new SecurityInterceptor();
     }
 }
