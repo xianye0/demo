@@ -6,9 +6,9 @@ import com.example.demo.plugins.model.response.Responses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,13 +43,13 @@ public class SecurityController extends BaseController {
      * @return
      */
     @GetMapping("queryMenuList")
-    public Responses queryMenuList(@RequestHeader(SecurityConstants.ACCESSTOKEN) String token) {
+    public Responses queryMenuList(@CookieValue(SecurityConstants.ACCESSTOKEN) String token) {
         return responsesBuilder.success(securityService.queryMenuList(token));
     }
 
 
     @GetMapping("logout")
-    public Responses logout(@RequestHeader(SecurityConstants.ACCESSTOKEN) String token) {
+    public Responses logout(@CookieValue(SecurityConstants.ACCESSTOKEN) String token) {
         securityService.logout(token);
         return responsesBuilder.success();
     }

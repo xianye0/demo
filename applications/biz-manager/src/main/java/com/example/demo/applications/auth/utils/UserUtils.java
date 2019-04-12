@@ -36,9 +36,9 @@ public class UserUtils {
         map.put(PRE + key, operator, TIMEOUT * 1000);
     }
 
-    public Map getOperatorMap(String key){
+    public Map getOperatorMap(String key) {
         Map o = map.get(PRE + key);
-        if(o == null){
+        if (o == null) {
             throw new ResponseException(ResponseCode.TOKEN_INVALID);
         }
         return o;
@@ -52,14 +52,18 @@ public class UserUtils {
         return (List<Authority>) getOperatorMap(key).get("menuTree");
     }
 
-    public void remove(String key){
+    public void remove(String key) {
         map.remove(PRE + key);
     }
 
-    public List<String> getAuthCodes(String key){
-        return (List<String>)getOperatorMap(key).get("authCodes");
+    public List<String> getAuthCodes(String key) {
+        return (List<String>) getOperatorMap(key).get("authCodes");
     }
 
+
+    public Map getOperateAuths(String key) {
+        return (Map) getOperatorMap(key).get("operateAuth");
+    }
 
 
 

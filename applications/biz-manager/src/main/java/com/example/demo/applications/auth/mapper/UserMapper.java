@@ -2,6 +2,9 @@ package com.example.demo.applications.auth.mapper;
 
 import com.example.demo.plugins.model.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.math.BigDecimal;
 
 /**
  * @author: rock
@@ -9,8 +12,9 @@ import org.apache.ibatis.annotations.Mapper;
  * @Description:
  */
 @Mapper
-public interface UserMapper extends CrudMapper<UserEntity>{
+public interface UserMapper extends CrudMapper<UserEntity> {
 
     UserEntity getByUsername(String username);
 
+    void changeStatus(@Param("id") BigDecimal id, @Param("status") String status);
 }

@@ -15,4 +15,9 @@
     <update id="updateLoginDate">
         update cm_employee set last_login_time=now() where username=#{0}
     </update>
+
+    <select id="queryUrlMap" resultType="com.example.demo.applications.auth.entity.AuthorityUrl">
+        select concat(trim(url),case when method is null or method ='' then '' else concat(':',method) end) path,
+            `key`,url,method,`level`,`desc` from sm_url where disable=0
+    </select>
 </mapper>

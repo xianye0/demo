@@ -7,10 +7,13 @@ import com.example.demo.plugins.model.page.ResultPage;
 import com.example.demo.plugins.model.response.Responses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.math.BigDecimal;
 
 /**
  * @author: rock
@@ -38,4 +41,9 @@ public class UserController extends BaseController {
         return responsesBuilder.success(userService.page(parameter));
     }
 
+    @GetMapping("{id}/{status}")
+    public Responses changeStatus(@PathVariable("id") BigDecimal id, @PathVariable("status") String status) {
+        userService.changeStatus(id, status);
+        return responsesBuilder.success();
+    }
 }

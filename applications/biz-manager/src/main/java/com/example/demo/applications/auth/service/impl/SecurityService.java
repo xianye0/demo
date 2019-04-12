@@ -1,6 +1,7 @@
 package com.example.demo.applications.auth.service.impl;
 
 import com.example.demo.applications.auth.entity.Authority;
+import com.example.demo.applications.auth.entity.AuthorityUrl;
 import com.example.demo.applications.auth.entity.Operator;
 import com.example.demo.applications.auth.exception.ResponseException;
 import com.example.demo.applications.auth.mapper.SecurityMapper;
@@ -49,10 +50,11 @@ public class SecurityService {
      * 获取公钥
      * @return
      */
-    public PasswordKey getPublicKey(){
+    public PasswordKey getPublicKey() {
         String key = createToken();
         return keyPairManager.getPublicKey(key);
     }
+
     /**
      * 登录
      * @param username
@@ -96,7 +98,7 @@ public class SecurityService {
      * @param token
      * @return
      */
-    public List<Authority> queryMenuList(String token){
+    public List<Authority> queryMenuList(String token) {
         return userUtils.getMenu(token);
     }
 
@@ -105,7 +107,7 @@ public class SecurityService {
      * 注销
      * @param token
      */
-    public void logout(String token){
+    public void logout(String token) {
         userUtils.remove(token);
     }
 
@@ -115,15 +117,19 @@ public class SecurityService {
      * @param url
      * @return
      */
-    public int checkAuth(String token,String url){
-        try{
-            if(userUtils.getAuthCodes(token).contains(url)){
+    public int checkAuth(String token, String url) {
+        try {
+            if (userUtils.getOperateAuths(token).containsKey(url)) {
                 return ResponseCode.SUCCESS;
             }
             return ResponseCode.AUTH_FAILED;
-        }catch (ResponseException e){
+        } catch (ResponseException e) {
             return ResponseCode.TOKEN_INVALID;
         }
+    }
+
+    public Map<String, AuthorityUrl> queryUrlMap() {
+        return securityMapper.queryUrlMap();
     }
 
 

@@ -15,7 +15,9 @@
     </resultMap>
 
     <select id="getByUsername" resultType="com.example.demo.plugins.model.entity.UserEntity">
-        select t.* from cm_employee t where username=#{0}
+        SELECT t.*
+        FROM cm_employee t
+        WHERE username = #{0}
     </select>
 
     <insert id="add" parameterType="com.example.demo.plugins.model.entity.UserEntity">
@@ -28,11 +30,13 @@
     </insert>
 
     <select id="list" resultType="com.example.demo.plugins.model.entity.UserEntity">
-        select t.* from cm_employee t
+        SELECT t.*
+        FROM cm_employee t
     </select>
 
     <select id="page" resultMap="userMap" parameterType="com.example.demo.plugins.model.page.PageParameter">
-        select e.*,d.name department_name,d.id department_id from cm_employee e left join cm_department d on e.depart_id=d.id where 1=1
+        select e.*,d.name department_name,d.id department_id from cm_employee e left join cm_department d on
+        e.depart_id=d.id where 1=1
         <if test="username != null and username != ''">
             and e.username=#{username}
         </if>
@@ -43,6 +47,15 @@
     </select>
 
     <update id="mod" parameterType="com.example.demo.plugins.model.entity.UserEntity">
-        update cm_employee set password=#{password},name=concat(name,1) where username = #{username}
+        UPDATE cm_employee
+        SET password = #{password}, name = concat(name, 1)
+        WHERE username = #{username}
+    </update>
+
+
+    <update id="changeStatus">
+        UPDATE cm_employee
+        SET status = #{status}
+        WHERE id = #{id}
     </update>
 </mapper>
