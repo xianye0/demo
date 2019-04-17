@@ -1,7 +1,7 @@
 package com.example.demo.applications.auth.controller;
 
 import com.example.demo.applications.auth.service.IDepartmentService;
-import com.example.demo.plugins.model.entity.DepartmentEntity;
+import com.example.demo.plugins.model.entity.OrganizationEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,17 +24,17 @@ public class DepartmentController extends BaseController{
 
 
     @PostMapping("add")
-    public void addUser(@RequestBody DepartmentEntity department){
+    public void addUser(@RequestBody OrganizationEntity department){
         departmentService.add(department);
     }
 
     @GetMapping("get")
-    public DepartmentEntity get(DepartmentEntity departmentEntity){
-        return departmentService.get(departmentEntity);
+    public OrganizationEntity get(OrganizationEntity organizationEntity){
+        return departmentService.get(organizationEntity);
     }
 
     @GetMapping("list")
-    public List<DepartmentEntity> getList(){
+    public List<OrganizationEntity> getList(){
         return departmentService.list();
     }
 }

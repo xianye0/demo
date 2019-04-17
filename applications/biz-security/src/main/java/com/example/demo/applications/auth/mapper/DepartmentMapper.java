@@ -1,6 +1,6 @@
 package com.example.demo.applications.auth.mapper;
 
-import com.example.demo.plugins.model.entity.DepartmentEntity;
+import com.example.demo.plugins.model.entity.OrganizationEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @Description:
  */
 @Mapper
-public interface DepartmentMapper extends CrudMapper<DepartmentEntity>{
+public interface DepartmentMapper extends CrudMapper<OrganizationEntity>{
 
 
 }

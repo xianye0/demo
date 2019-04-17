@@ -53,7 +53,7 @@ public class TreeUtils {
         if (isSortable(type)){
             childList.sort((a,b)->((Sortable)a).getOrder()-((Sortable)b).getOrder());
         }
-        type.setSubList(childList);
+        type.setChildren(childList);
     }
 
     /**

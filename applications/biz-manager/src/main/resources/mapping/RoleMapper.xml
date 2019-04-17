@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.applications.mapper.RoleMapper">
+
+
+    <insert id="add" parameterType="com.example.demo.applications.entity.RoleEntity">
+        insert into cm_role (name,status, creator_id, create_time, modifier_id, modify_time)
+        values(#{name},1,#{currentUser.id},now(),#{currentUser.id},now())
+    </insert>
+
+    <select id="list" resultType="com.example.demo.applications.entity.RoleEntity">
+        SELECT t.*
+        FROM cm_role t
+    </select>
+
+    <select id="page" resultType="com.example.demo.applications.entity.RoleEntity" parameterType="com.example.demo.plugins.model.page.PageParameter">
+        select * from cm_role
+
+    </select>
+
+    <update id="mod" parameterType="com.example.demo.applications.entity.RoleEntity">
+        UPDATE cm_role
+        SET name = #{name}
+        WHERE id = #{id}
+    </update>
+
+    <select id="get" parameterType="com.example.demo.applications.entity.RoleEntity" resultType="com.example.demo.applications.entity.RoleEntity">
+        select * from cm_role where id=#{id}
+    </select>
+
+</mapper>

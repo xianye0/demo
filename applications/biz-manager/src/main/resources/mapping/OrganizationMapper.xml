@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo.applications.auth.mapper.DepartmentMapper">
+<mapper namespace="com.example.demo.applications.mapper.OrganizationMapper">
     <resultMap id="departmentMap" type="com.example.demo.plugins.model.entity.OrganizationEntity">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
@@ -17,15 +17,19 @@
         </association>
     </resultMap>
     <select id="get" resultType="com.example.demo.plugins.model.entity.OrganizationEntity">
-        select t.* from cm_department t where t.id=#{0}
+        select t.* from cm_organization t where t.id=#{0}
     </select>
 
     <insert id="add" parameterType="com.example.demo.plugins.model.entity.OrganizationEntity">
-        insert into cm_department (name, parent_id, status, creator_id, create_time, modifier_id, modify_time)
+        insert into cm_organization (name, parent_id, status, creator_id, create_time, modifier_id, modify_time)
         values(#{name},#{parent.id},#{status},#{currentUser.id},now(),#{currentUser.id},now())
     </insert>
 
     <select id="list" resultType="com.example.demo.plugins.model.entity.OrganizationEntity">
-        select t.* from cm_department t
+        select t.* from cm_organization t
+    </select>
+
+    <select id="page" resultType="com.example.demo.plugins.model.entity.OrganizationEntity">
+        select t.* from cm_organization t
     </select>
 </mapper>

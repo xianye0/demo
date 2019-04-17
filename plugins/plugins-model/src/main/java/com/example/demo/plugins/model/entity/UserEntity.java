@@ -4,8 +4,6 @@ import com.example.demo.plugins.model.enumtype.CommonStatusEnum;
 import com.example.demo.plugins.model.enumtype.UserTypeEnum;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 /**
  * @author: rock
  * @date: 2019/1/23
@@ -15,7 +13,7 @@ import java.math.BigDecimal;
 public class UserEntity extends OperateBase {
     private String username;
     private String password;
-    private DepartmentEntity department;
+    private OrganizationEntity organization;
     private String name;
     private String phone;
     private UserTypeEnum type;

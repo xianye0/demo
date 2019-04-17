@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.applications.mapper.AuthorityMapper">
+
+
+
+
+    <select id="getAuthorityCodeList" resultType="string">
+        SELECT t.menu_id FROM cm_role_menu t where t.role_id=#{0}
+    </select>
+
+    <select id="getAllAuthorityList" resultType="com.example.demo.applications.entity.Authority">
+        select name title,status,id,parent_id parentId,`order` from sm_authority
+    </select>
+
+
+</mapper>

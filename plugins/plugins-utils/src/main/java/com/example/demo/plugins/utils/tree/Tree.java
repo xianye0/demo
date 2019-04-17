@@ -36,11 +36,11 @@ public interface Tree<T> {
      * 返回下级数据列表
      * @return 下级数据列表
      */
-    List<T> getSubList();
+    List<T> getChildren();
 
     /**
      * 设置下级数据列表
      * @param subList 下级数据列表
      */
-    void setSubList(List<T> subList);
+    void setChildren(List<T> subList);
 }

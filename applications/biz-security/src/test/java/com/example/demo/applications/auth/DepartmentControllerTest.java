@@ -1,6 +1,6 @@
 package com.example.demo.applications.auth;
 
-import com.example.demo.plugins.model.entity.DepartmentEntity;
+import com.example.demo.plugins.model.entity.OrganizationEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,8 +51,8 @@ public class DepartmentControllerTest {
         list();
     }
 
-    public DepartmentEntity createDepartment(){
-        DepartmentEntity department = new DepartmentEntity();
+    public OrganizationEntity createDepartment(){
+        OrganizationEntity department = new OrganizationEntity();
         department.setName("部门1");
         return department;
     }

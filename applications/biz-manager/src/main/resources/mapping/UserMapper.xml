@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo.applications.auth.mapper.UserMapper">
+<mapper namespace="com.example.demo.applications.mapper.UserMapper">
 
     <resultMap type="com.example.demo.plugins.model.entity.UserEntity" id="userMap">
         <id property="id" column="id" jdbcType="NUMERIC"/>
@@ -8,7 +8,7 @@
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="status" column="status"/>
         <!-- 		column:对应的列名		property:对应的属性名	 -->
-        <association property="department" javaType="com.example.demo.plugins.model.entity.DepartmentEntity">
+        <association property="department" javaType="com.example.demo.plugins.model.entity.OrganizationEntity">
             <id property="id" column="department_id" jdbcType="NUMERIC"/>
             <result property="name" column="department_name" jdbcType="VARCHAR"/>
         </association>
@@ -35,7 +35,7 @@
     </select>
 
     <select id="page" resultMap="userMap" parameterType="com.example.demo.plugins.model.page.PageParameter">
-        select e.*,d.name department_name,d.id department_id from cm_employee e left join cm_department d on
+        select e.*,d.name department_name,d.id department_id from cm_employee e left join cm_organization d on
         e.depart_id=d.id where 1=1
         <if test="username != null and username != ''">
             and e.username=#{username}

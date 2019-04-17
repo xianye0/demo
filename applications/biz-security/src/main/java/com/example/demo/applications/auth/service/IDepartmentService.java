@@ -1,6 +1,6 @@
 package com.example.demo.applications.auth.service;
 
-import com.example.demo.plugins.model.entity.DepartmentEntity;
+import com.example.demo.plugins.model.entity.OrganizationEntity;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import java.util.List;
 
 public interface IDepartmentService {
 
-    void add(DepartmentEntity department);
+    void add(OrganizationEntity department);
 
-    List<DepartmentEntity> list();
+    List<OrganizationEntity> list();
 
-    DepartmentEntity get(DepartmentEntity department);
+    OrganizationEntity get(OrganizationEntity department);
 }
