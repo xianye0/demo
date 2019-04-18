@@ -32,9 +32,11 @@ public class UserController extends BaseController {
         userService.add(user);
     }
 
-    @GetMapping("get")
-    public UserEntity getUser(String username) {
-        return userService.getByUsername(username);
+    @GetMapping("get/{id}")
+    public Responses<UserEntity> getUser(@PathVariable("id") BigDecimal id) {
+        UserEntity user = new UserEntity();
+        user.setId(id);
+        return responsesBuilder.success(userService.get(user));
     }
 
     @GetMapping("page")

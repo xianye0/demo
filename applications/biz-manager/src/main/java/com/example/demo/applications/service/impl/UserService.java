@@ -10,6 +10,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author: rock
@@ -22,12 +23,30 @@ public class UserService extends CrudService<UserMapper,UserEntity> {
     RoleService roleService;
 
     @Transactional
-    public void addUser(UserEntity user){
+    @Override
+    public void add(UserEntity user){
         super.add(user);
         if(!CollectionUtils.isEmpty(user.getRoles())){
             delRoles(user);
             addRoles(user);
         }
+    }
+    @Transactional
+    @Override
+    public void mod(UserEntity user) {
+        super.mod(user);
+        if(!CollectionUtils.isEmpty(user.getRoles())){
+            delRoles(user);
+            addRoles(user);
+        }
+    }
+
+    @Override
+    public UserEntity get(UserEntity userEntity) {
+        UserEntity user = super.get(userEntity);
+        List<BigDecimal> roles = dao.getRoles(userEntity);
+        user.setRoles(roles);
+        return user;
     }
 
     public UserEntity getByUsername(String username) {

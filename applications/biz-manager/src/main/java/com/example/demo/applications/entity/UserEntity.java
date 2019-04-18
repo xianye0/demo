@@ -4,6 +4,7 @@ import com.example.demo.plugins.model.enumtype.CommonStatusEnum;
 import com.example.demo.plugins.model.enumtype.UserTypeEnum;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -23,5 +24,5 @@ public class UserEntity extends OperateBase {
     private CommonStatusEnum status;
     private UserEntity creator;
     private UserEntity modifier;
-    private List<String> roles;
+    private List<BigDecimal> roles;
 }

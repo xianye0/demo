@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author: rock
@@ -21,4 +22,6 @@ public interface UserMapper extends CrudMapper<UserEntity> {
 
     void addRoles(UserEntity user);
     void delRoles(UserEntity user);
+
+    List<BigDecimal> getRoles(UserEntity user);
 }
