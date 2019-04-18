@@ -22,7 +22,7 @@ public class UserUtils {
 
     private static final String PRE = "USER_";
     @Autowired
-    private ICacheMap<String, Map> map;
+    private ICacheMap<String, Object> map;
 
     public UserUtils() {
 
@@ -36,8 +36,12 @@ public class UserUtils {
         map.put(PRE + key, operator, TIMEOUT * 1000);
     }
 
+    public void setOperator(String key, Operator operator) {
+        map.putHash(PRE + key,"userInfo", operator);
+    }
+
     public Map getOperatorMap(String key) {
-        Map o = map.get(PRE + key);
+        Map o = (Map)map.get(PRE + key);
         if (o == null) {
             throw new ResponseException(ResponseCode.TOKEN_INVALID);
         }

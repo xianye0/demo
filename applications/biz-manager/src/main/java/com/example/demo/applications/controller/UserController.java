@@ -1,7 +1,7 @@
 package com.example.demo.applications.controller;
 
+import com.example.demo.applications.entity.UserEntity;
 import com.example.demo.applications.service.impl.UserService;
-import com.example.demo.plugins.model.entity.UserEntity;
 import com.example.demo.plugins.model.enumtype.CommonStatusEnum;
 import com.example.demo.plugins.model.page.PageParameter;
 import com.example.demo.plugins.model.page.ResultPage;
@@ -48,5 +48,9 @@ public class UserController extends BaseController {
         return responsesBuilder.success();
     }
 
-
+    @PostMapping("mod")
+    public Responses mod(@RequestBody UserEntity user){
+        userService.mod(user);
+        return responsesBuilder.success();
+    }
 }

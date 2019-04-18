@@ -1,6 +1,6 @@
 package com.example.demo.applications.mapper;
 
-import com.example.demo.plugins.model.entity.UserEntity;
+import com.example.demo.applications.entity.UserEntity;
 import com.example.demo.plugins.model.enumtype.CommonStatusEnum;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -18,4 +18,7 @@ public interface UserMapper extends CrudMapper<UserEntity> {
     UserEntity getByUsername(String username);
 
     void changeStatus(@Param("id") BigDecimal id, @Param("status") CommonStatusEnum status);
+
+    void addRoles(UserEntity user);
+    void delRoles(UserEntity user);
 }

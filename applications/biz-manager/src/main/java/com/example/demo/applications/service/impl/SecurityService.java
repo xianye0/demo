@@ -111,6 +111,15 @@ public class SecurityService {
         userUtils.remove(token);
     }
 
+    public void modOperator(String token, Operator operator) {
+        userService.mod(operator);
+        Operator currOper = userUtils.getOperator(token);
+        currOper.setName(operator.getName());
+        currOper.setPhone(operator.getPhone());
+        currOper.setEmail(operator.getEmail());
+        userUtils.setOperator(token, currOper);
+    }
+
     /**
      * 判断是否拥有权限
      * @param token

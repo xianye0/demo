@@ -1,5 +1,6 @@
 package com.example.demo.applications.controller;
 
+import com.example.demo.applications.entity.Operator;
 import com.example.demo.applications.entity.constants.SecurityConstants;
 import com.example.demo.applications.service.impl.SecurityService;
 import com.example.demo.plugins.model.response.Responses;
@@ -9,6 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,6 +53,12 @@ public class SecurityController extends BaseController {
     @GetMapping("logout")
     public Responses logout(@CookieValue(SecurityConstants.ACCESSTOKEN) String token) {
         securityService.logout(token);
+        return responsesBuilder.success();
+    }
+
+    @PostMapping("modOperator")
+    public Responses modOperator(@CookieValue(SecurityConstants.ACCESSTOKEN) String token,@RequestBody Operator operator){
+        securityService.modOperator(token,operator);
         return responsesBuilder.success();
     }
 

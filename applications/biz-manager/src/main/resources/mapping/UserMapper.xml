@@ -8,9 +8,9 @@
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="status" column="status"/>
         <!-- 		column:对应的列名		property:对应的属性名	 -->
-        <association property="department" javaType="com.example.demo.plugins.model.entity.OrganizationEntity">
-            <id property="id" column="department_id" jdbcType="NUMERIC"/>
-            <result property="name" column="department_name" jdbcType="VARCHAR"/>
+        <association property="organization" javaType="com.example.demo.plugins.model.entity.OrganizationEntity">
+            <id property="id" column="org_id" jdbcType="NUMERIC"/>
+            <result property="name" column="org_name" jdbcType="VARCHAR"/>
         </association>
     </resultMap>
 
@@ -22,10 +22,10 @@
 
     <insert id="add" parameterType="com.example.demo.plugins.model.entity.UserEntity">
         insert into cm_employee (username, password
-        <if test="department != null">,depart_id</if>
+        <if test="organization != null">,org_id</if>
         , name, phone, status, creator_id, create_time, modifier_id, modify_time)
         values(#{username},#{password}
-        <if test="department != null">,#{department.id}</if>
+        <if test="organization != null">,#{organization.id}</if>
         ,#{name},#{phone},#{status},#{currentUser.id},now(),#{currentUser.id},now())
     </insert>
 
@@ -36,7 +36,7 @@
 
     <select id="page" resultMap="userMap" parameterType="com.example.demo.plugins.model.page.PageParameter">
         select e.*,d.name department_name,d.id department_id from cm_employee e left join cm_organization d on
-        e.depart_id=d.id where 1=1
+        e.org_id=d.id where 1=1
         <if test="username != null and username != ''">
             and e.username=#{username}
         </if>
@@ -58,4 +58,15 @@
         SET status = #{status}
         WHERE id = #{id}
     </update>
+
+    <insert id="addRoles" parameterType="com.example.demo.plugins.model.entity.UserEntity">
+        insert into cm_employee_role (employee_id, role_id) values
+            <foreach collection="roles" open="(" close=")" separator="," item="role">
+                (#{id},#{role})
+            </foreach>
+    </insert>
+
+    <delete id="delRoles" parameterType="com.example.demo.plugins.model.entity.UserEntity">
+        delete from cm_employee_role where employee_id=#{id}
+    </delete>
 </mapper>

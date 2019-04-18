@@ -1,6 +1,5 @@
 package com.example.demo.applications.entity;
 
-import com.example.demo.plugins.model.entity.OperateBase;
 import lombok.Data;
 
 /**

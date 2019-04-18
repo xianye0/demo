@@ -36,6 +36,10 @@ public class RoleController extends BaseController {
         roleService.mod(role);
     }
 
+    @GetMapping("list")
+    public Responses<RoleEntity> list() {
+        return responsesBuilder.success(roleService.list());
+    }
 
     @GetMapping("page")
     public Responses<ResultPage<RoleEntity>> getPage(PageParameter parameter) {

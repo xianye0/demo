@@ -22,8 +22,9 @@ public class TreeUtils {
         List<Tree> list = new ArrayList();
         List<Tree> cList = new ArrayList();
         for (Object type : l) {
-            Tree tree = (Tree)type;
-            if (tree.getParentCode() == null || "".equals(tree.getParentCode())) {
+            Tree tree = (Tree) type;
+            if (tree.getParentCode() == null || "".equals(tree.getParentCode()) || "0"
+                    .equals(tree.getParentCode().toString())) {
                 list.add(tree);
             } else {
                 cList.add(tree);
@@ -43,15 +44,18 @@ public class TreeUtils {
         }
         List<Tree> childList = new ArrayList();
         for (int i = tempList.size() - 1; i >= 0; i--) {
+            if (i >= tempList.size()) {
+                break;
+            }
             Tree child = tempList.get(i);
             if (type.getCode().equals(child.getParentCode())) {
                 createChildList(child, tempList);
                 childList.add(child);
-                tempList.remove(i);
+                tempList.remove(child);
             }
         }
-        if (isSortable(type)){
-            childList.sort((a,b)->((Sortable)a).getOrder()-((Sortable)b).getOrder());
+        if (isSortable(type)) {
+            childList.sort((a, b) -> ((Sortable) a).getOrder() - ((Sortable) b).getOrder());
         }
         type.setChildren(childList);
     }
@@ -61,7 +65,7 @@ public class TreeUtils {
      * @param o 对象是否支持排序
      * @return yes/no
      */
-    public static boolean isSortable(Object o){
+    public static boolean isSortable(Object o) {
         return o instanceof Sortable;
     }
 }

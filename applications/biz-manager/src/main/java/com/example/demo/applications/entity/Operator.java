@@ -1,6 +1,5 @@
 package com.example.demo.applications.entity;
 
-import com.example.demo.plugins.model.entity.UserEntity;
 import lombok.Data;
 
 import java.util.Date;

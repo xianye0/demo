@@ -1,6 +1,6 @@
 package com.example.demo.applications.mapper;
 
-import com.example.demo.plugins.model.entity.OrganizationEntity;
+import com.example.demo.applications.entity.OrganizationEntity;
 import com.example.demo.plugins.model.enumtype.CommonStatusEnum;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

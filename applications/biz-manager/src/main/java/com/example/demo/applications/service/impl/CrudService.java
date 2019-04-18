@@ -1,7 +1,7 @@
 package com.example.demo.applications.service.impl;
 
+import com.example.demo.applications.entity.OperateBase;
 import com.example.demo.applications.mapper.CrudMapper;
-import com.example.demo.plugins.model.entity.OperateBase;
 import com.example.demo.plugins.model.page.PageParameter;
 import com.example.demo.plugins.model.page.ResultPage;
 import org.springframework.beans.factory.annotation.Autowired;

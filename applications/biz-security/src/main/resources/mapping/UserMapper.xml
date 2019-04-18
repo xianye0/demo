@@ -8,7 +8,7 @@
 
     <insert id="add" parameterType="com.example.demo.plugins.model.entity.UserEntity">
         insert into cm_employee (username, password
-        <if test="department != null">,depart_id</if>
+        <if test="department != null">,org_id</if>
         , name, phone, status, creator_id, create_time, modifier_id, modify_time)
         values(#{username},#{password}
         <if test="department != null">,#{department.id}</if>

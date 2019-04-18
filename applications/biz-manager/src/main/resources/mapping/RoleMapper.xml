@@ -4,17 +4,20 @@
 
 
     <insert id="add" parameterType="com.example.demo.applications.entity.RoleEntity">
-        insert into cm_role (name,status, creator_id, create_time, modifier_id, modify_time)
-        values(#{name},1,#{currentUser.id},now(),#{currentUser.id},now())
+        INSERT INTO cm_role (name, status, creator_id, create_time, modifier_id, modify_time)
+        VALUES (#{name}, 1, #{currentUser.id}, now(), #{currentUser.id}, now())
     </insert>
 
     <select id="list" resultType="com.example.demo.applications.entity.RoleEntity">
         SELECT t.*
         FROM cm_role t
+        WHERE status = 1
     </select>
 
-    <select id="page" resultType="com.example.demo.applications.entity.RoleEntity" parameterType="com.example.demo.plugins.model.page.PageParameter">
-        select * from cm_role
+    <select id="page" resultType="com.example.demo.applications.entity.RoleEntity"
+            parameterType="com.example.demo.plugins.model.page.PageParameter">
+        SELECT *
+        FROM cm_role
 
     </select>
 
@@ -24,8 +27,11 @@
         WHERE id = #{id}
     </update>
 
-    <select id="get" parameterType="com.example.demo.applications.entity.RoleEntity" resultType="com.example.demo.applications.entity.RoleEntity">
-        select * from cm_role where id=#{id}
+    <select id="get" parameterType="com.example.demo.applications.entity.RoleEntity"
+            resultType="com.example.demo.applications.entity.RoleEntity">
+        SELECT *
+        FROM cm_role
+        WHERE id = #{id}
     </select>
 
 </mapper>

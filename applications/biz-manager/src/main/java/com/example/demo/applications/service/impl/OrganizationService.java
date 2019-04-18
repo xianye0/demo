@@ -1,11 +1,13 @@
 package com.example.demo.applications.service.impl;
 
+import com.example.demo.applications.entity.OrganizationEntity;
 import com.example.demo.applications.mapper.OrganizationMapper;
-import com.example.demo.plugins.model.entity.OrganizationEntity;
 import com.example.demo.plugins.model.enumtype.CommonStatusEnum;
+import com.example.demo.plugins.utils.tree.TreeUtils;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author: rock
@@ -17,5 +19,10 @@ public class OrganizationService extends CrudService<OrganizationMapper, Organiz
 
     public void changeStatus(BigDecimal id, CommonStatusEnum status) {
         dao.changeStatus(id, status);
+    }
+
+    public List<OrganizationEntity> tree() {
+        List<OrganizationEntity> list = dao.list();
+        return TreeUtils.listToTree(list);
     }
 }
