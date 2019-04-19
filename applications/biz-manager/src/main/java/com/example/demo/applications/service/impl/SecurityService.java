@@ -111,6 +111,10 @@ public class SecurityService {
         userUtils.remove(token);
     }
 
+    public Operator getOperator(String token){
+        return userUtils.getOperator(token);
+    }
+
     public void modOperator(String token, Operator operator) {
         userService.mod(operator);
         Operator currOper = userUtils.getOperator(token);

@@ -28,8 +28,9 @@ public class UserController extends BaseController {
     UserService userService;
 
     @PostMapping("add")
-    public void addUser(@RequestBody UserEntity user) {
+    public Responses addUser(@RequestBody UserEntity user) {
         userService.add(user);
+        return responsesBuilder.success();
     }
 
     @GetMapping("get/{id}")

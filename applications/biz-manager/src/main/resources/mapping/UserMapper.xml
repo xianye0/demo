@@ -19,7 +19,7 @@
     <select id="getByUsername" resultType="com.example.demo.applications.entity.UserEntity">
         SELECT t.*
         FROM cm_employee t
-        WHERE username = #{0}
+        WHERE  username = #{0}
     </select>
 
     <select id="get" resultType="com.example.demo.applications.entity.UserEntity">
@@ -39,12 +39,12 @@
 
     <select id="list" resultType="com.example.demo.applications.entity.UserEntity">
         SELECT t.*
-        FROM cm_employee t
+        FROM cm_employee t where status!=2
     </select>
 
     <select id="page" resultMap="userMap" parameterType="com.example.demo.plugins.model.page.PageParameter">
         select e.*,d.name org_name,d.id org_id from cm_employee e left join cm_organization d on
-        e.org_id=d.id where 1=1
+        e.org_id=d.id where e.status!=2
         <if test="username != null and username != ''">
             and e.username=#{username}
         </if>
@@ -60,8 +60,9 @@
             modify_time=now()
             <if test="password!= null">,password = #{password}</if>
             <if test="name!= null">,name = #{name}</if>
-        <if test="phone!= null">,phone = #{phone}</if>
-        <if test="email!= null">,email = #{email}</if>
+            <if test="phone!= null">,phone = #{phone}</if>
+            <if test="email!= null">,email = #{email}</if>
+            <if test="status!= null">,status = #{status}</if>
         WHERE id = #{id}
     </update>
 

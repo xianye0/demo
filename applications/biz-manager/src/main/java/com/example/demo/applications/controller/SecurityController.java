@@ -56,6 +56,12 @@ public class SecurityController extends BaseController {
         return responsesBuilder.success();
     }
 
+    @GetMapping("getOperator")
+    public Responses<Operator> getOperator(@CookieValue(SecurityConstants.ACCESSTOKEN) String token){
+
+        return responsesBuilder.success(securityService.getOperator(token));
+    }
+
     @PostMapping("modOperator")
     public Responses modOperator(@CookieValue(SecurityConstants.ACCESSTOKEN) String token,@RequestBody Operator operator){
         securityService.modOperator(token,operator);
