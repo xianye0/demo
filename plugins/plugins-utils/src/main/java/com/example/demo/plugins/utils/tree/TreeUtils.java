@@ -13,27 +13,59 @@ public class TreeUtils {
 
     }
 
+
     /**
-     * 将list转为tree，会比较code和parentCode，parentCode为null或""时为一级
-     * @param l 需要转换成树型结构的原list
-     * @return 树型结构list
+     * 将list转换为树型结构
+     * @param l
+     * @return
      */
     public static List listToTree(List l) {
-        List<Tree> list = new ArrayList();
-        List<Tree> cList = new ArrayList();
+        List<Tree> first = new ArrayList();
+        List<Tree> other = new ArrayList();
+        List<Tree> notFirst = new ArrayList();
+
+
+        //将parentCode为空的数据取出来作为一级树
         for (Object type : l) {
             Tree tree = (Tree) type;
-            if (tree.getParentCode() == null || "".equals(tree.getParentCode()) || "0"
-                    .equals(tree.getParentCode().toString())) {
-                list.add(tree);
-            } else {
-                cList.add(tree);
+            if (tree.getParentCode() == null || "".equals(tree.getParentCode())) {
+                first.add(tree);
+            }else {
+                other.add(tree);
             }
         }
-        for (Tree t : list) {
-            createChildList(t, cList);
+
+        //剩余节点如果存在父节点则不为一级
+        for (int i = other.size()-1;i>=0;i--) {
+            Tree tree = other.get(i);
+            for(int j = i-1;j>=0;j--){
+                Tree tree1 = other.get(j);
+                if(tree1.getParentCode().equals(tree.getCode())){
+                    notFirst.add(other.remove(j));
+                }else if(tree.getParentCode().equals(tree1.getCode())){
+                    notFirst.add(other.remove(i));
+                    break;
+                }
+            }
         }
-        return list;
+
+        //剩余节点的父节点在一级节点中存在则为非一级节点
+        for (int i = other.size()-1;i>=0;i--) {
+            Tree tree = other.get(i);
+            for(Tree tree1 :first){
+                if(tree.getParentCode().equals(tree1.getCode())){
+                    notFirst.add(other.remove(i));
+                    break;
+                }
+            }
+        }
+        //剩余节点的父节点在一级结点中不存在，则为一级节点
+        first.addAll(other);
+        //生成树
+        for (Tree t : first) {
+            createChildList(t, notFirst);
+        }
+        return first;
     }
 
 
