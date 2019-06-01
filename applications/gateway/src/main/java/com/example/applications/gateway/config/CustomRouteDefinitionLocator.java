@@ -16,9 +16,9 @@ import java.util.List;
 /**
  * @author: rock
  * @date: 2019/1/24
- * @Description:  自定义路由
+ * @Description:  通过代码定义路由（可以从数据库中加载）
  */
-@Component
+//@Component
 public class CustomRouteDefinitionLocator implements RouteDefinitionLocator {
 
     @Override

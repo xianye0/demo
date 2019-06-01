@@ -4,6 +4,18 @@ server:
 spring:
   application:
     name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: AUTH-CENTER
+          uri: lb://AUTH-CENTER
+          predicates:
+           - Path=/1/**   #访问http://gateway/security/hello会跳转到http://AUTH-CENTER/security/hello
+          filters:
+           - StripPrefix=1  #去掉第一个前缀   /1/** 会变成 /**
+      discovery:
+        locator:
+          enabled: false     #为true时会自动将注册中心上的服务以/APPLICATION/**的方式添加到路由中
 
 
 eureka:
